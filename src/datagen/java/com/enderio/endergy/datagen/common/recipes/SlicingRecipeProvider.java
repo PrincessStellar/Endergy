@@ -1,6 +1,7 @@
 package com.enderio.endergy.datagen.common.recipes;
 
 import com.enderio.core.data.recipe.SubRecipeProvider;
+import com.enderio.endergy.common.EnderIOEndergy;
 import com.enderio.endergy.common.init.EndergyItems;
 import com.enderio.enderio.EnderIO;
 import com.enderio.enderio.content.machines.slicer.SlicingRecipe;
@@ -27,7 +28,7 @@ public class SlicingRecipeProvider extends SubRecipeProvider {
     }
 
     protected void build(Item output, List<Ingredient> inputs, int energy, RecipeOutput recipeOutput) {
-        recipeOutput.accept(EnderIO.rl("slicing/" + BuiltInRegistries.ITEM.getKey(output).getPath()),
+        recipeOutput.accept(EnderIOEndergy.rl("slicing/" + BuiltInRegistries.ITEM.getKey(output).getPath()),
                 new SlicingRecipe(new ItemStack(output), inputs, energy), null);
     }
 

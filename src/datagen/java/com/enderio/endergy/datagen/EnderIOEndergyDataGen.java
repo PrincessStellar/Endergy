@@ -6,6 +6,7 @@ import com.enderio.endergy.datagen.client.EndergyLanguageProvider;
 import com.enderio.endergy.common.EnderIOEndergy;
 import com.enderio.endergy.datagen.common.recipes.EndergyRecipeProvider;
 import com.enderio.endergy.datagen.common.datapack_registries.ConduitsBootstrap;
+import com.enderio.enderio.EnderIO;
 import com.enderio.enderio.api.EnderIORegistries;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
@@ -35,8 +36,6 @@ public class EnderIOEndergyDataGen {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 
-        // TODO: Remove this wrapper...
-//        provider.addSubProvider(event.includeServer(), new ConduitRecipes(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new EndergyRecipeProvider(packOutput, lookupProvider));
 
         generator.addProvider(event.includeClient(), new EndergyLanguageProvider(packOutput));
@@ -46,6 +45,11 @@ public class EnderIOEndergyDataGen {
 
     private static RegistrySetBuilder createDatapackEntriesBuilder() {
         return new RegistrySetBuilder()
-            .add(EnderIORegistries.Keys.CONDUIT, ConduitsBootstrap::bootstrap);
+            .add(EnderIORegistries.Keys.CONDUIT, context -> {
+                ConduitsBootstrap.bootstrap(context);
+                // Need to bootstrap main mod conduits to reference them for recipes.
+                // TODO: Better way of exposing this without shipping the datagen source set fully.
+                com.enderio.enderio.datagen.common.datapack_registries.ConduitsBootstrap.bootstrap(context);
+            });
     }
 }

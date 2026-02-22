@@ -1,6 +1,7 @@
 package com.enderio.endergy.datagen.common.recipes;
 
 import com.enderio.core.data.recipe.SubRecipeProvider;
+import com.enderio.endergy.common.EnderIOEndergy;
 import com.enderio.endergy.common.init.EndergyBlocks;
 import com.enderio.endergy.common.init.EndergyItems;
 import com.enderio.enderio.EnderIO;
@@ -129,7 +130,7 @@ public class MaterialRecipeProvider extends SubRecipeProvider {
                 .pattern("NNN")
                 .define('N', nugget)
                 .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(ingot))
-                .save(recipeOutput, EnderIO.rl(nugget.getDescriptionId() + "_to_ingot"));
+                .save(recipeOutput, EnderIOEndergy.rl(nugget.getDescriptionId() + "_to_ingot"));
     }
 
     private void grindingBall(RecipeOutput recipeOutput, Item result, ItemLike input) {

@@ -5,7 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": "enderio:conduit_binder"
+            "items": "enderio_endergy:crystalline_alloy_ingot"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "enderio:melodic_energy_conduit_upgrade"
+        "recipe": "enderio_endergy:item.enderio_endergy.crystalline_alloy_nugget_to_ingot"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "enderio:melodic_energy_conduit_upgrade"
+      "enderio_endergy:item.enderio_endergy.crystalline_alloy_nugget_to_ingot"
     ]
   }
 }

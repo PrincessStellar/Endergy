@@ -1,6 +1,7 @@
 package com.enderio.endergy.datagen.common.recipes;
 
 import com.enderio.core.data.recipe.SubRecipeProvider;
+import com.enderio.endergy.common.EnderIOEndergy;
 import com.enderio.endergy.common.init.EndergyItems;
 import com.enderio.enderio.EnderIO;
 import com.enderio.enderio.api.EnderIOAPI;
@@ -76,13 +77,13 @@ public class AlloyRecipeProvider extends SubRecipeProvider {
 
     protected void build(ItemStack output, List<SizedIngredient> inputs, int energy, float experience,
             RecipeOutput recipeOutput) {
-        build(EnderIO.rl("alloy_smelting/" + BuiltInRegistries.ITEM.getKey(output.getItem()).getPath()), inputs,
+        build(EnderIOEndergy.rl("alloy_smelting/" + BuiltInRegistries.ITEM.getKey(output.getItem()).getPath()), inputs,
                 output, energy, experience, recipeOutput);
     }
 
     protected void build(ItemStack output, String suffix, List<SizedIngredient> inputs, int energy, float experience,
             RecipeOutput recipeOutput) {
-        build(EnderIOAPI
+        build(EnderIOEndergy
                 .rl("alloy_smelting/" + BuiltInRegistries.ITEM.getKey(output.getItem()).getPath() + "_" + suffix),
                 inputs, output, energy, experience, recipeOutput);
     }

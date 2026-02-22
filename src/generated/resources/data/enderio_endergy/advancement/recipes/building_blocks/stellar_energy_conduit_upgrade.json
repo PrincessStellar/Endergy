@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "enderio:melodic_energy_conduit"
+        "recipe": "enderio_endergy:stellar_energy_conduit_upgrade"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "enderio:melodic_energy_conduit"
+      "enderio_endergy:stellar_energy_conduit_upgrade"
     ]
   }
 }

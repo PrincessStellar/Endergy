@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "enderio:gold_energy_conduit"
+        "recipe": "enderio_endergy:iron_energy_conduit"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "enderio:gold_energy_conduit"
+      "enderio_endergy:iron_energy_conduit"
     ]
   }
 }
