@@ -24,6 +24,14 @@ repositories {
         }
     }
 
+    maven {
+        name = "ModMaven"
+        url = uri("https://modmaven.dev")
+        content {
+            includeGroup("mezz.jei")
+        }
+    }
+
     mavenLocal()
 }
 
@@ -112,8 +120,12 @@ configurations {
 }
 
 dependencies {
-    implementation "com.enderio:endercore:$enderio_version_range"
-    implementation "com.enderio:enderio:$enderio_version_range"
+    // JEI
+    compileOnly(libs.bundles.jeiApi)
+    localRuntime(libs.bundles.jei)
+
+    implementation(libs.endercore)
+    implementation(libs.enderio)
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

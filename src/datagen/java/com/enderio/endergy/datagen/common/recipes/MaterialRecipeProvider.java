@@ -98,20 +98,11 @@ public class MaterialRecipeProvider extends SubRecipeProvider {
     }
 
     private void addGrindingBalls(RecipeOutput recipeOutput) {
-//        grindingBall(recipeOutput, EIOItems.DARK_STEEL_BALL.get(), EIOTags.Items.INGOTS_DARK_STEEL,
-//                EIOItems.DARK_STEEL_INGOT.get());
-//        grindingBall(recipeOutput, EIOItems.SOULARIUM_BALL.get(), EIOTags.Items.INGOTS_SOULARIUM,
-//                EIOItems.SOULARIUM_INGOT.get());
-//        grindingBall(recipeOutput, EIOItems.CONDUCTIVE_ALLOY_BALL.get(), EIOTags.Items.INGOTS_CONDUCTIVE_ALLOY,
-//                EIOItems.CONDUCTIVE_ALLOY_INGOT.get());
-//        grindingBall(recipeOutput, EIOItems.PULSATING_ALLOY_BALL.get(), EIOTags.Items.INGOTS_PULSATING_ALLOY,
-//                EIOItems.PULSATING_ALLOY_INGOT.get());
-//        grindingBall(recipeOutput, EIOItems.REDSTONE_ALLOY_BALL.get(), EIOTags.Items.INGOTS_REDSTONE_ALLOY,
-//                EIOItems.REDSTONE_ALLOY_INGOT.get());
-//        grindingBall(recipeOutput, EIOItems.ENERGETIC_ALLOY_BALL.get(), EIOTags.Items.INGOTS_ENERGETIC_ALLOY,
-//                EIOItems.ENERGETIC_ALLOY_INGOT.get());
-//        grindingBall(recipeOutput, EIOItems.VIBRANT_ALLOY_BALL.get(), EIOTags.Items.INGOTS_VIBRANT_ALLOY,
-//                EIOItems.VIBRANT_ALLOY_INGOT.get());
+        grindingBall(recipeOutput, EndergyItems.CRUDE_STEEL_BALL.get(), EndergyItems.CRUDE_STEEL_INGOT.get());
+        grindingBall(recipeOutput, EndergyItems.CRYSTALLINE_ALLOY_BALL.get(), EndergyItems.CRYSTALLINE_ALLOY_INGOT.get());
+        grindingBall(recipeOutput, EndergyItems.MELODIC_ALLOY_BALL.get(), EndergyItems.MELODIC_ALLOY_INGOT.get());
+        grindingBall(recipeOutput, EndergyItems.STELLAR_ALLOY_BALL.get(), EndergyItems.STELLAR_ALLOY_INGOT.get());
+        grindingBall(recipeOutput, EndergyItems.VIVID_ALLOY_BALL.get(), EndergyItems.VIVID_ALLOY_INGOT.get());
     }
 
     // region Helpers
@@ -141,13 +132,13 @@ public class MaterialRecipeProvider extends SubRecipeProvider {
                 .save(recipeOutput, EnderIO.rl(nugget.getDescriptionId() + "_to_ingot"));
     }
 
-    private void grindingBall(RecipeOutput recipeOutput, Item result, TagKey<Item> input, ItemLike trigger) {
+    private void grindingBall(RecipeOutput recipeOutput, Item result, ItemLike input) {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result, 24)
                 .pattern(" I ")
                 .pattern("III")
                 .pattern(" I ")
                 .define('I', input)
-                .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(trigger))
+                .unlockedBy("has_ingredient", InventoryChangeTrigger.TriggerInstance.hasItems(input))
                 .save(recipeOutput);
     }
 

@@ -53,11 +53,11 @@ public class EndergyLanguageProvider extends LanguageProvider {
         add(EndergyItems.VIVID_ALLOY_NUGGET.get(), "Vivid Alloy Nugget");
 
         // Grinding balls
-//        add(EndergyItems.SOULARIUM_BALL.get(), "Soularium Grinding Ball");
-//        add(EndergyItems.CONDUCTIVE_ALLOY_BALL.get(), "Conductive Alloy Grinding Ball");
-//        add(EndergyItems.PULSATING_ALLOY_BALL.get(), "Pulsating Alloy Grinding Ball");
-//        add(EndergyItems.REDSTONE_ALLOY_BALL.get(), "Redstone Alloy Grinding Ball");
-//        add(EndergyItems.ENERGETIC_ALLOY_BALL.get(), "Energetic Alloy Grinding Ball");
+        add(EndergyItems.CRUDE_STEEL_BALL.get(), "Crude Steel Grinding Ball");
+        add(EndergyItems.CRYSTALLINE_ALLOY_BALL.get(), "Crystalline Alloy Grinding Ball");
+        add(EndergyItems.MELODIC_ALLOY_BALL.get(), "Melodic Alloy Grinding Ball");
+        add(EndergyItems.STELLAR_ALLOY_BALL.get(), "Stellar Alloy Grinding Ball");
+        add(EndergyItems.VIVID_ALLOY_BALL.get(), "Vivid Alloy Grinding Ball");
 
         // Capacitors
         add(EndergyItems.GRAINY_CAPACITOR.get(), "Grainy Capacitor");

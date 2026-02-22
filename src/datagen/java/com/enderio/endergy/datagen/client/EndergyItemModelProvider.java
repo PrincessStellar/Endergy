@@ -35,13 +35,12 @@ public class EndergyItemModelProvider extends ItemModelProvider {
         basicItem(EndergyItems.VIVID_ALLOY_NUGGET.get());
 
         // Grinding Balls
-//        basicItem(EndergyItems.CONDUCTIVE_ALLOY_BALL.get());
-//        basicItem(EndergyItems.ENERGETIC_ALLOY_BALL.get());
-//        basicItem(EndergyItems.VIBRANT_ALLOY_BALL.get());
-//        basicItem(EndergyItems.REDSTONE_ALLOY_BALL.get());
-//        basicItem(EndergyItems.PULSATING_ALLOY_BALL.get());
-//        basicItem(EndergyItems.DARK_STEEL_BALL.get());
-        
+        basicItem(EndergyItems.CRUDE_STEEL_BALL.get());
+        basicItem(EndergyItems.CRYSTALLINE_ALLOY_BALL.get());
+        basicItem(EndergyItems.MELODIC_ALLOY_BALL.get());
+        basicItem(EndergyItems.STELLAR_ALLOY_BALL.get());
+        basicItem(EndergyItems.VIVID_ALLOY_BALL.get());
+
         // Capacitors
         basicItem(EndergyItems.GRAINY_CAPACITOR.get());
         basicItem(EndergyItems.VIVID_CAPACITOR.get());
