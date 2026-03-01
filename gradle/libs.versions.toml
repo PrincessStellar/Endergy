@@ -1,5 +1,5 @@
 [versions]
-enderio = "8.1.1.18-feat-endergy+3f5ea0c3ba"
+enderio = "8.1.1.20-feat-endergy+61bec27952"
 jeiVersion = "19.25.0.321"
 
 [libraries]

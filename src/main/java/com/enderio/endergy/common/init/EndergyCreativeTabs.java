@@ -5,7 +5,11 @@ import com.enderio.core.common.item.ICustomCreativeTabEntries;
 import com.enderio.endergy.common.EnderIOEndergy;
 import com.enderio.endergy.common.lang.EndergyCommonComponents;
 import com.enderio.enderio.EnderIO;
+import com.enderio.enderio.api.EnderIOAPI;
+import com.enderio.enderio.api.EnderIORegistries;
+import com.enderio.enderio.api.conduits.ConduitApi;
 import com.enderio.enderio.content.broken_spawner.BrokenSpawnerItem;
+import com.enderio.enderio.content.conduits.ConduitBlockItem;
 import com.enderio.enderio.content.paint.block.PaintedBlock;
 import com.enderio.enderio.content.tools.vials.SoulVialItem;
 import com.enderio.enderio.foundation.lang.EIOCommonLang;
@@ -25,7 +29,9 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -41,11 +47,12 @@ public class EndergyCreativeTabs {
         .builder()
         .title(EndergyCommonComponents.CREATIVE_TAB_TITLE)
         .icon(() -> new ItemStack(EndergyItems.TOTEMIC_CAPACITOR.get()))
-        .withTabsBefore(EIOCreativeTabs.MAIN)
+        .withTabsBefore(EnderIOAPI.MAIN_CREATIVE_TAB)
         .withSearchBar()
         .displayItems((CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) -> {
             addAll(EndergyItems.ITEMS, parameters, output);
             addAll(EndergyBlocks.ITEMS, parameters, output);
+            addConduitsToTab(parameters, output);
         })
         .build());
 
@@ -62,6 +69,29 @@ public class EndergyCreativeTabs {
 //                    EIOItems.PULSATING_ALLOY_INGOT, EIOItems.DARK_STEEL_INGOT, EIOItems.SOULARIUM_INGOT, EIOItems.END_STEEL_INGOT)
 //                .map(i -> i.get().getDefaultInstance())
 //                .toList());
+        }
+    }
+
+    private static void addConduitsToTab(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) {
+        var registry = parameters.holders().lookupOrThrow(EnderIORegistries.Keys.CONDUIT);
+        var conduitTypes = registry.listElements().toList();
+
+        var conduitClassTypes = conduitTypes.stream()
+                .map(e -> e.value().getClass())
+                .sorted(Comparator.comparing(Class::getName))
+                .distinct()
+                .toList();
+
+        for (var conduitClass : conduitClassTypes) {
+            var matchingConduitTypes = conduitTypes.stream()
+                    .filter(e -> e.value().getClass() == conduitClass)
+                    .filter(e -> e.getKey().location().getNamespace().equals(EnderIOEndergy.MOD_ID))
+                    .sorted(ConduitApi.INSTANCE::compareConduits)
+                    .toList();
+
+            for (var conduitType : matchingConduitTypes) {
+                output.accept(ConduitApi.INSTANCE.getConduitItem(conduitType), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            }
         }
     }
 
