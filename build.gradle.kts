@@ -1,3 +1,5 @@
+import java.net.URI
+
 plugins {
     `java-library`
     `maven-publish`
@@ -205,6 +207,19 @@ publishing {
 
                 scm {
                     url.set("https://github.com/Team-EnderIO/Endergy.git")
+                }
+            }
+        }
+    }
+
+    repositories {
+        if (System.getenv("RVR_MAVEN_USER") != null) {
+            maven {
+                name = "Rover656"
+                url = URI("https://maven.rover656.dev/releases")
+                credentials {
+                    username = System.getenv("RVR_MAVEN_USER")
+                    password = System.getenv("RVR_MAVEN_PASSWORD")
                 }
             }
         }
