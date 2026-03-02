@@ -1,9 +1,11 @@
+import com.palantir.gradle.gitversion.VersionDetails
 import java.net.URI
 
 plugins {
     `java-library`
     `maven-publish`
     id("net.neoforged.moddev") version "2.0.140"
+    id("com.palantir.git-version") version "4.0.0"
     idea
 }
 
@@ -23,8 +25,27 @@ val minecraft_version: String by project
 val minecraft_version_range: String by project
 val loader_version_range: String by project
 
-version = mod_version
 group = mod_group_id
+
+// TODO: Make this work outside of a git context.
+val versionDetails: groovy.lang.Closure<VersionDetails> by extra
+var details = versionDetails()
+
+// TODO: Palantir doesn't let us filter for v prefixes on tags, this could cause issues if we tag anything else.
+//       this plugin isn't perfect, but it'll do in the short term.
+val tagVersion = Regex("""\d+(\.\d+)+(-\w+)?""").find(details.lastTag)?.value ?: "1.0.0"
+
+// Without - metadata for dev builds
+val strippedTagVersion = Regex("""\d+(\.\d+)+""").find(details.lastTag)?.value ?: "1.0.0"
+
+if (details.commitDistance == 0 && details.isCleanTag) {
+    version = tagVersion
+} else if (details.branchName != null) {
+    version = "$strippedTagVersion.${details.commitDistance}-${details.branchName.replace("/", "-")}+${details.gitHash}"
+} else {
+    version = "$strippedTagVersion.${details.commitDistance}-dev+${details.gitHash}"
+}
+
 
 repositories {
     maven {
@@ -151,7 +172,7 @@ val generateModMetadata = tasks.register<ProcessResources>("generateModMetadata"
         "mod_id" to mod_id,
         "mod_name" to mod_name,
         "mod_license" to mod_license,
-        "mod_version" to mod_version,
+        "mod_version" to version,
         "enderio_version_range" to libs.versions.enderio.get(),
     )
     inputs.properties(replaceProperties)
