@@ -138,7 +138,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_name               : mod_name,
             mod_license            : mod_license,
             mod_version            : mod_version,
-            enderio_version_range  : libs.versions.enderio,
+            enderio_version_range  : libs.versions.enderio.get(),
     ]
     inputs.properties replaceProperties
     expand replaceProperties
