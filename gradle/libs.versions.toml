@@ -1,5 +1,5 @@
 [versions]
-enderio = "8.1.1.18-feat-endergy+3f5ea0c3ba"
+enderio = { strictly = "[8.2.0-alpha,)", prefer = "8.2.0-alpha" }
 jeiVersion = "19.25.0.321"
 
 [libraries]

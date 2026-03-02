@@ -4,15 +4,8 @@ import com.enderio.core.common.item.CreativeTabVariants;
 import com.enderio.core.common.item.ICustomCreativeTabEntries;
 import com.enderio.endergy.common.EnderIOEndergy;
 import com.enderio.endergy.common.lang.EndergyCommonComponents;
-import com.enderio.enderio.EnderIO;
-import com.enderio.enderio.content.broken_spawner.BrokenSpawnerItem;
+import com.enderio.enderio.api.EnderIOAPI;
 import com.enderio.enderio.content.paint.block.PaintedBlock;
-import com.enderio.enderio.content.tools.vials.SoulVialItem;
-import com.enderio.enderio.foundation.lang.EIOCommonLang;
-import com.enderio.enderio.init.EIOBlocks;
-import com.enderio.enderio.init.EIOCreativeTabs;
-import com.enderio.enderio.init.EIOFluids;
-import com.enderio.enderio.init.EIOItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
@@ -27,7 +20,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 public class EndergyCreativeTabs {
     private static final List<Predicate<Item>> EXCLUSIONS_PREDICATE = List.of(
@@ -41,7 +33,7 @@ public class EndergyCreativeTabs {
         .builder()
         .title(EndergyCommonComponents.CREATIVE_TAB_TITLE)
         .icon(() -> new ItemStack(EndergyItems.TOTEMIC_CAPACITOR.get()))
-        .withTabsBefore(EIOCreativeTabs.MAIN)
+        .withTabsBefore(EnderIOAPI.MAIN_CREATIVE_TAB)
         .withSearchBar()
         .displayItems((CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output) -> {
             addAll(EndergyItems.ITEMS, parameters, output);
