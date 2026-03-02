@@ -17,20 +17,13 @@ import java.util.function.Function;
 public class ConduitsBootstrap {
     public static void bootstrap(BootstrapContext<Conduit<?, ?>> context) {
         // TODO: Need to adapt rates to new balance, just getting them in
-        register(context, EndergyConduits.CRUDE_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/crude_energy"), desc,
-            Optional.of(EndergyCreativeTabs.MAIN), 20));
-        register(context, EndergyConduits.COPPER_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/copper_energy"), desc,
-            Optional.of(EndergyCreativeTabs.MAIN), 40));
-        register(context, EndergyConduits.IRON_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/iron_energy"), desc,
-            Optional.of(EndergyCreativeTabs.MAIN),80));
-        register(context, EndergyConduits.GOLD_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/gold_energy"), desc,
-            Optional.of(EndergyCreativeTabs.MAIN), 160));
-        register(context, EndergyConduits.CRYSTALLINE_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/crystalline_energy"), desc,
-            Optional.of(EndergyCreativeTabs.MAIN), 384_000));
-        register(context, EndergyConduits.MELODIC_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/melodic_energy"), desc,
-            Optional.of(EndergyCreativeTabs.MAIN), 768_000));
-        register(context, EndergyConduits.STELLAR_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/stellar_energy"), desc,
-            Optional.of(EndergyCreativeTabs.MAIN), Integer.MAX_VALUE));
+        register(context, EndergyConduits.CRUDE_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/crude_energy"), desc, 20));
+        register(context, EndergyConduits.COPPER_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/copper_energy"), desc, 40));
+        register(context, EndergyConduits.IRON_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/iron_energy"), desc, 80));
+        register(context, EndergyConduits.GOLD_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/gold_energy"), desc, 160));
+        register(context, EndergyConduits.CRYSTALLINE_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/crystalline_energy"), desc, 384_000));
+        register(context, EndergyConduits.MELODIC_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/melodic_energy"), desc, 768_000));
+        register(context, EndergyConduits.STELLAR_ENERGY, (desc) -> new EnergyConduit(EnderIOEndergy.rl("block/conduit/stellar_energy"), desc, Integer.MAX_VALUE));
     }
 
     private static void register(BootstrapContext<Conduit<?, ?>> context, ResourceKey<Conduit<?, ?>> key, Function<Component, Conduit<?, ?>> factory) {

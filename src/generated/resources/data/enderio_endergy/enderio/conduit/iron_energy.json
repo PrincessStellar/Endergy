@@ -1,6 +1,5 @@
 {
   "type": "enderio:energy",
-  "creative_tab": "enderio_endergy:endergy",
   "description": {
     "translate": "conduit.enderio_endergy.iron_energy"
   },
