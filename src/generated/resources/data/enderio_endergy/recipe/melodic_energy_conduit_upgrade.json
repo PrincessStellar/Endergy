@@ -2,16 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "B": {
-      "item": "enderio:conduit_binder"
-    },
+    "B": "enderio:conduit_binder",
     "C": {
-      "type": "enderio:conduit",
+      "neoforge:ingredient_type": "enderio:conduit",
       "conduit_type": "enderio_endergy:crystalline_energy"
     },
-    "I": {
-      "item": "enderio_endergy:melodic_alloy_ingot"
-    }
+    "I": "enderio_endergy:melodic_alloy_ingot"
   },
   "pattern": [
     "BBB",

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "N": {
-      "item": "enderio_endergy:melodic_alloy_nugget"
-    }
+    "N": "enderio_endergy:melodic_alloy_nugget"
   },
   "pattern": [
     "NNN",
@@ -12,7 +10,6 @@
     "NNN"
   ],
   "result": {
-    "count": 1,
     "id": "enderio_endergy:melodic_alloy_ingot"
   }
 }

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "enderio_endergy:crude_steel_block"
-    }
+    "enderio_endergy:crude_steel_block"
   ],
   "result": {
     "count": 9,

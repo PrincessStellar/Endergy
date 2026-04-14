@@ -1,6 +1,5 @@
 package com.enderio.endergy.common.init;
 
-import com.enderio.core.common.item.CreativeTabVariants;
 import com.enderio.core.common.item.ICustomCreativeTabEntries;
 import com.enderio.endergy.common.EnderIOEndergy;
 import com.enderio.endergy.common.lang.EndergyCommonComponents;
@@ -27,7 +26,7 @@ public class EndergyCreativeTabs {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, EnderIOEndergy.MOD_ID);
 
-    public static final ResourceKey<CreativeModeTab> MAIN = ResourceKey.create(Registries.CREATIVE_MODE_TAB, EnderIOEndergy.rl("endergy"));
+    public static final ResourceKey<CreativeModeTab> MAIN = ResourceKey.create(Registries.CREATIVE_MODE_TAB, EnderIOEndergy.id("endergy"));
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TAB = CREATIVE_MODE_TABS.register("endergy", () -> CreativeModeTab
         .builder()
@@ -76,11 +75,6 @@ public class EndergyCreativeTabs {
                 customCreativeTabEntries.addAdditionalCreativeTabEntries(properties, output);
             } else {
                 output.accept(item);
-
-                // TODO: Remove this old interface
-                if (item instanceof CreativeTabVariants variants) {
-                    variants.addAllVariants(output);
-                }
             }
         }
     }

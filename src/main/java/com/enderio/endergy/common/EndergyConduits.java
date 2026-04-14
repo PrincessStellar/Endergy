@@ -14,6 +14,6 @@ public class EndergyConduits {
     public static final ResourceKey<Conduit<?, ?>> STELLAR_ENERGY = create("stellar_energy");
 
     private static ResourceKey<Conduit<?, ?>> create(String name) {
-        return ResourceKey.create(EnderIORegistries.Keys.CONDUIT, EnderIOEndergy.rl(name));
+        return ResourceKey.create(EnderIORegistries.Keys.CONDUIT, EnderIOEndergy.id(name));
     }
 }

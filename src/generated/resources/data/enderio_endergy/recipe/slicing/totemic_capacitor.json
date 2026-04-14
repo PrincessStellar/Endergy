@@ -2,27 +2,14 @@
   "type": "enderio:slicing",
   "energy": 20000,
   "inputs": [
-    {
-      "tag": "c:ingots/soularium"
-    },
-    {
-      "item": "minecraft:totem_of_undying"
-    },
-    {
-      "tag": "c:ingots/soularium"
-    },
-    {
-      "tag": "c:dusts/grains_of_vibrancy"
-    },
-    {
-      "item": "enderio_endergy:crystalline_capacitor"
-    },
-    {
-      "tag": "c:dusts/grains_of_vibrancy"
-    }
+    "#c:ingots/soularium",
+    "minecraft:totem_of_undying",
+    "#c:ingots/soularium",
+    "#c:dusts/grains_of_vibrancy",
+    "enderio_endergy:crystalline_capacitor",
+    "#c:dusts/grains_of_vibrancy"
   ],
   "output": {
-    "count": 1,
     "id": "enderio_endergy:totemic_capacitor"
   }
 }

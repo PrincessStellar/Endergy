@@ -5,15 +5,15 @@
   "inputs": [
     {
       "count": 1,
-      "item": "minecraft:nether_star"
+      "ingredient": "minecraft:nether_star"
     },
     {
       "count": 1,
-      "item": "enderio_endergy:melodic_alloy_ingot"
+      "ingredient": "enderio_endergy:melodic_alloy_ingot"
     },
     {
       "count": 4,
-      "item": "minecraft:clay_ball"
+      "ingredient": "minecraft:clay_ball"
     }
   ],
   "output": {

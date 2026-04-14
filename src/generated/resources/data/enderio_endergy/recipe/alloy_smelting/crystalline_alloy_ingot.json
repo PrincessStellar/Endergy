@@ -5,15 +5,14 @@
   "inputs": [
     {
       "count": 1,
-      "tag": "c:dusts/grains_of_pizeallity"
+      "ingredient": "#c:dusts/grains_of_pizeallity"
     },
     {
       "count": 1,
-      "tag": "c:ingots/gold"
+      "ingredient": "#c:ingots/gold"
     }
   ],
   "output": {
-    "count": 1,
     "id": "enderio_endergy:crystalline_alloy_ingot"
   }
 }

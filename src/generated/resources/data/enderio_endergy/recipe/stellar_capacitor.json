@@ -2,15 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "C": {
-      "item": "enderio_endergy:melodic_capacitor"
-    },
-    "I": {
-      "item": "enderio_endergy:stellar_alloy_ingot"
-    },
-    "S": {
-      "item": "minecraft:shulker_shell"
-    }
+    "C": "enderio_endergy:melodic_capacitor",
+    "I": "enderio_endergy:stellar_alloy_ingot",
+    "S": "minecraft:shulker_shell"
   },
   "pattern": [
     " I ",
@@ -18,7 +12,6 @@
     " I "
   ],
   "result": {
-    "count": 1,
     "id": "enderio_endergy:stellar_capacitor"
   }
 }

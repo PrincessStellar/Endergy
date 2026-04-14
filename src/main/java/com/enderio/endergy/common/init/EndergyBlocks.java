@@ -1,7 +1,6 @@
 package com.enderio.endergy.common.init;
 
 import com.enderio.endergy.common.EnderIOEndergy;
-import com.enderio.enderio.EnderIO;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -28,18 +27,18 @@ public class EndergyBlocks {
 
     private static DeferredBlock<Block> registerMetalBlock(String name) {
         return registerWithItem(name, Block::new,
-            BlockBehaviour.Properties.of().sound(SoundType.METAL).mapColor(MapColor.METAL).strength(5, 6).requiresCorrectToolForDrops());
+            () -> BlockBehaviour.Properties.of().sound(SoundType.METAL).mapColor(MapColor.METAL).strength(5, 6).requiresCorrectToolForDrops());
     }
 
     // endregion
 
-    private static <B extends Block> DeferredBlock<B> registerWithItem(String name, Function<BlockBehaviour.Properties, ? extends B> func, BlockBehaviour.Properties props) {
+    private static <B extends Block> DeferredBlock<B> registerWithItem(String name, Function<BlockBehaviour.Properties, ? extends B> func, Supplier<BlockBehaviour.Properties> props) {
         var blockHolder = BLOCKS.<B>registerBlock(name, func, props);
         ITEMS.registerSimpleBlockItem(blockHolder);
         return blockHolder;
     }
 
-    private static <B extends Block> DeferredBlock<B> registerWithItem(String name, Function<BlockBehaviour.Properties, ? extends B> func, BlockBehaviour.Properties props, Function<Supplier<B>, Item> itemFactory) {
+    private static <B extends Block> DeferredBlock<B> registerWithItem(String name, Function<BlockBehaviour.Properties, ? extends B> func, Supplier<BlockBehaviour.Properties> props, Function<Supplier<B>, Item> itemFactory) {
         var blockHolder = BLOCKS.<B>registerBlock(name, func, props);
         ITEMS.register(name, () -> itemFactory.apply(blockHolder));
         return blockHolder;

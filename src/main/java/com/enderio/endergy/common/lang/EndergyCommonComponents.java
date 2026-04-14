@@ -1,9 +1,9 @@
 package com.enderio.endergy.common.lang;
 
-import com.enderio.enderio.EnderIO;
-import net.minecraft.Util;
+import com.enderio.endergy.common.EnderIOEndergy;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.util.Util;
 
 public class EndergyCommonComponents {
     public static final MutableComponent CREATIVE_TAB_TITLE = create("itemGroup", "endergy");
@@ -23,6 +23,6 @@ public class EndergyCommonComponents {
     }
 
     private static MutableComponent create(String type, String path) {
-        return Component.translatable(Util.makeDescriptionId(type, EnderIO.rl(path)));
+        return Component.translatable(Util.makeDescriptionId(type, EnderIOEndergy.id(path)));
     }
 }

@@ -5,7 +5,7 @@ import com.enderio.endergy.common.init.EndergyCreativeTabs;
 import com.enderio.endergy.common.init.EndergyItems;
 import com.enderio.endergy.common.item.TotemicCapacitorItem;
 import com.enderio.enderio.api.EnderIOCapabilities;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
@@ -14,8 +14,8 @@ import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 public class EnderIOEndergy {
     public static final String MOD_ID = "enderio_endergy";
 
-    public static ResourceLocation rl(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier id(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 
     public EnderIOEndergy(IEventBus eventBus) {

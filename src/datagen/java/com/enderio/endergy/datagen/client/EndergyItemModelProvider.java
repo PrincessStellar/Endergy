@@ -1,75 +1,46 @@
 package com.enderio.endergy.datagen.client;
 
 import com.enderio.endergy.common.EnderIOEndergy;
-import com.enderio.endergy.common.init.EndergyBlocks;
 import com.enderio.endergy.common.init.EndergyItems;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BucketItem;
-import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.client.model.generators.loaders.DynamicFluidContainerModelBuilder;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.internal.versions.neoforge.NeoForgeVersion;
 
-public class EndergyItemModelProvider extends ItemModelProvider {
-    public EndergyItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, EnderIOEndergy.MOD_ID, existingFileHelper);
+public class EndergyItemModelProvider extends ModelProvider {
+    public EndergyItemModelProvider(PackOutput output) {
+        super(output, EnderIOEndergy.MOD_ID);
     }
 
     @Override
-    protected void registerModels() {
+    protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
         // Alloys
-        basicItem(EndergyItems.CRUDE_STEEL_INGOT.get());
-        basicItem(EndergyItems.CRYSTALLINE_ALLOY_INGOT.get());
-        basicItem(EndergyItems.MELODIC_ALLOY_INGOT.get());
-        basicItem(EndergyItems.STELLAR_ALLOY_INGOT.get());
-        basicItem(EndergyItems.VIVID_ALLOY_INGOT.get());
+        itemModels.generateFlatItem(EndergyItems.CRUDE_STEEL_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.CRYSTALLINE_ALLOY_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.MELODIC_ALLOY_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.STELLAR_ALLOY_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.VIVID_ALLOY_INGOT.get(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(EndergyItems.CRUDE_STEEL_NUGGET.get());
-        basicItem(EndergyItems.CRYSTALLINE_ALLOY_NUGGET.get());
-        basicItem(EndergyItems.MELODIC_ALLOY_NUGGET.get());
-        basicItem(EndergyItems.STELLAR_ALLOY_NUGGET.get());
-        basicItem(EndergyItems.VIVID_ALLOY_NUGGET.get());
+        itemModels.generateFlatItem(EndergyItems.CRUDE_STEEL_NUGGET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.CRYSTALLINE_ALLOY_NUGGET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.MELODIC_ALLOY_NUGGET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.STELLAR_ALLOY_NUGGET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.VIVID_ALLOY_NUGGET.get(), ModelTemplates.FLAT_ITEM);
 
         // Grinding Balls
-        basicItem(EndergyItems.CRUDE_STEEL_BALL.get());
-        basicItem(EndergyItems.CRYSTALLINE_ALLOY_BALL.get());
-        basicItem(EndergyItems.MELODIC_ALLOY_BALL.get());
-        basicItem(EndergyItems.STELLAR_ALLOY_BALL.get());
-        basicItem(EndergyItems.VIVID_ALLOY_BALL.get());
+        itemModels.generateFlatItem(EndergyItems.CRUDE_STEEL_BALL.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.CRYSTALLINE_ALLOY_BALL.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.MELODIC_ALLOY_BALL.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.STELLAR_ALLOY_BALL.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.VIVID_ALLOY_BALL.get(), ModelTemplates.FLAT_ITEM);
 
         // Capacitors
-        basicItem(EndergyItems.GRAINY_CAPACITOR.get());
-        basicItem(EndergyItems.VIVID_CAPACITOR.get());
-        basicItem(EndergyItems.CRYSTALLINE_CAPACITOR.get());
-        basicItem(EndergyItems.MELODIC_CAPACITOR.get());
-        basicItem(EndergyItems.STELLAR_CAPACITOR.get());
-        basicItem(EndergyItems.TOTEMIC_CAPACITOR.get());
-
-        // region Blocks
-
-        // Alloys
-        simpleBlockItem(EndergyBlocks.CRUDE_STEEL_BLOCK.get());
-        simpleBlockItem(EndergyBlocks.CRYSTALLINE_ALLOY_BLOCK.get());
-        simpleBlockItem(EndergyBlocks.MELODIC_ALLOY_BLOCK.get());
-        simpleBlockItem(EndergyBlocks.STELLAR_ALLOY_BLOCK.get());
-        simpleBlockItem(EndergyBlocks.VIVID_ALLOY_BLOCK.get());
-
-        // endregion
-    }
-    
-    public ItemModelBuilder flatBlockItem(ResourceLocation block) {
-        return this.getBuilder(block.toString()).parent(new ModelFile.UncheckedModelFile("item/generated"))
-            .texture("layer0", ResourceLocation.fromNamespaceAndPath(block.getNamespace(), "block/" + block.getPath()));
-    }
-
-    public ItemModelBuilder bucketItem(BucketItem item) {
-        return withExistingParent(BuiltInRegistries.ITEM.getKey(item).toString(), ResourceLocation.fromNamespaceAndPath(NeoForgeVersion.MOD_ID, "item/bucket"))
-            .customLoader(DynamicFluidContainerModelBuilder::begin)
-            .fluid(item.content)
-            .end();
+        itemModels.generateFlatItem(EndergyItems.GRAINY_CAPACITOR.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.VIVID_CAPACITOR.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.CRYSTALLINE_CAPACITOR.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.MELODIC_CAPACITOR.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.STELLAR_CAPACITOR.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EndergyItems.TOTEMIC_CAPACITOR.get(), ModelTemplates.FLAT_ITEM);
     }
 }
