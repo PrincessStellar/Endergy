@@ -23,7 +23,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '25'
           distribution: 'temurin'
 
       - uses: gradle/actions/setup-gradle@v3
@@ -86,8 +86,8 @@ jobs:
             build/libs/*-@(api|sources).jar
           changelog: ${{ github.event.release.body }}
           loaders: neoforge
-          game-versions: 1.21.1
-          java: 21
+          game-versions: 26.1.2
+          java: 25
           dependencies: |
             enderio{curseforge:64578}
 
@@ -116,8 +116,8 @@ jobs:
             build/libs/*-@(api|sources).jar
           changelog: ${{ github.event.release.body }}
           loaders: neoforge
-          game-versions: 1.21.1
-          java: 21
+          game-versions: 26.1.2
+          java: 25
           dependencies: |
             enderio{modrinth:49ZofO4f}
 
